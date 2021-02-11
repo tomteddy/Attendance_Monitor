@@ -79,17 +79,17 @@ TEMPLATES = [
 AUTH_USER_MODEL = 'employees.User'
 
 
-# WSGI_APPLICATION = 'attendance_register.wsgi.application'
+WSGI_APPLICATION = 'attendance_register.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default=config('DATABASE_URL')
-#     )
-# }
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
 
 
 # Password validation
