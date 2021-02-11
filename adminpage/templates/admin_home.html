@@ -1,0 +1,95 @@
+{% extends "adm_base.html" %}
+
+{% block content %}
+
+<div class="container" style="height: auto; width: 45%; position: absolute; padding-top: 30px; left: 0; right: 0;">
+<h3 style="text-align: center;">admin</h3>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Profile</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employee_list %}
+                    <tr>
+                        <th scope="row">{{employee.sl}}</th>
+                        <td id="{{employee.email}}" onclick="show_dates(this.id)">{{employee.name}}</td>
+                        <td>{{employee.company}}</td>
+                        <td>{{employee.position}}</td>
+                        <td><button type="button" id="{{employee.email}}" class="btn btn-primary" onclick="show_profile(this.id)">profile</button></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function show_dates(email)
+    {
+
+        console.log(email);
+        var form = document.createElement("form");
+        form.method = "POST";
+
+        var emp_email = document.createElement("input"); 
+        emp_email.type = "hidden";
+        emp_email.name = "emp_email";
+        emp_email.value = email;
+        form.appendChild(emp_email);
+
+        var form_id = document.createElement("input"); 
+        form_id.type = "hidden";
+        form_id.name = "form";
+        form_id.value = "email"
+        form.appendChild(form_id);
+
+        var token = document.createElement("input"); 
+        token.type = 'hidden';
+        token.name = 'csrfmiddlewaretoken';
+        token.value = '{{ csrf_token }}';
+        form.appendChild(token);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    function show_profile(email)
+    {
+
+        console.log(email);
+        var form = document.createElement("form");
+        form.method = "POST";
+
+        var emp_email = document.createElement("input"); 
+        emp_email.type = "hidden";
+        emp_email.name = "emp_email";
+        emp_email.value = email;
+        form.appendChild(emp_email);
+
+        var form_id = document.createElement("input"); 
+        form_id.type = "hidden";
+        form_id.name = "form";
+        form_id.value = "profile_show";
+        form.appendChild(form_id);
+
+        var token = document.createElement("input"); 
+        token.type = 'hidden';
+        token.name = 'csrfmiddlewaretoken';
+        token.value = '{{ csrf_token }}';
+        form.appendChild(token);
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+</script>
+    
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends "adm_base.html" %}
+
+{% block content %}
+
+<div class="container" style="height: auto; width: 75%; position: absolute; padding-top: 90px; left: 0; right: 0;">
+    <p style="font-weight: bold;">Name :</p>
+    <p>{{user.name}}</p>
+
+    <p style="font-weight: bold;">Company :</p>
+    <p>{{details.comp}}</p>
+
+    <p style="font-weight: bold;">Position :</p>
+    <p>{{details.position}}</p>
+
+    <p style="font-weight: bold;">Phone number :</p>
+    <p>{{details.phone_number}}</p>
+
+    <p style="font-weight: bold;">E-mail :</p>
+    <p>{{user.email}}</p>
+
+    <p style="font-weight: bold;">Date of Birth :</p>
+    <p>{{details.date_of_birth}}</p>
+
+    <p style="font-weight: bold;">Blood group :</p>
+    <p>{{details.blood_group}}</p>
+
+    <p style="font-weight: bold;">Address :</p>
+    <p>{{details.address}}</p>
+
+</div>
+
+
+{% endblock content %}

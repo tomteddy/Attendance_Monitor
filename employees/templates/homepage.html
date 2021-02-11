@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container"
+  style="height: auto; width: auto; position: absolute; padding-top: 10%; left: 0; right: 0; padding-bottom: 30px;">
+
+  <h5 style="display: inline;">Welcome, </h5>
+  <h2 style="display: inline;">{{name}}</h2>
+  <h6 style="display: inline;">({{pos}})</h6><br><br>
+  <form method="POST">
+    {% csrf_token %}
+    {% if work == 'ended' %}
+    <button class="btn btn-success" name="work" value="start" type="submit">Start work</button>
+    {% elif work == 'started' %}
+    <button class="btn btn-success" name="work" value="end" type="submit">End work</button>
+    {% endif %}
+
+  </form>
+
+</div>
+{% endblock content %}

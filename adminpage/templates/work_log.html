@@ -1,0 +1,23 @@
+{% extends "adm_base.html" %}
+
+{% block content %}
+<div class="container" style="height: auto; width: 75%; position: absolute; padding-top: 90px; left: 0; right: 0;">
+    <p style="font-weight: bold;">Name :</p>
+    <p>{{log.name}}</p>
+    <p style="font-weight: bold;">Position :</p>
+    <p>{{log.position}}</p>
+
+    <p style="font-weight: bold;">Date :</p>
+    <p>{{log.date}}</p>
+    <p style="font-weight: bold;">Time :</p>
+    <p>{{log.start_time}} - {{log.end_time}}</p>
+
+    <p style="font-weight: bold;">Worked on :</p>
+    <p>{{log.worked_on}}</p>
+    <p style="font-weight: bold;">Work description :</p>
+    <p>{{log.work_description}}</p>
+
+</div>
+
+
+{% endblock content %}

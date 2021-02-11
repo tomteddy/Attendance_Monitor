@@ -1,0 +1,65 @@
+{% extends "adm_base.html" %}
+
+{% block content %}
+
+
+<div class="container" style="height: auto; width: 45%; position: absolute; padding-top: 30px; left: 0; right: 0;">
+    <h3 style="text-align: center;">{{name}}</h3>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Worked on</th>
+                    <th scope="col">Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                <tr id="{{log.work_log_id}}" onclick="work_info(this.id)">
+                    <th scope="row">{{log.sl}}</th>
+                    <td>{{log.date}}</td>
+                    <td>{{log.worked_on}}</td>
+                    <td>{{log.start_time}} - {{log.end_time}}</td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function work_info(id) {
+
+        console.log(id);
+        var form = document.createElement("form");
+        form.method = "POST";
+        var token = document.createElement("input");
+        token.type = 'hidden';
+        token.name = 'csrfmiddlewaretoken';
+        token.value = '{{ csrf_token }}';
+        form.appendChild(token);
+        var form_id = document.createElement("input");
+        form_id.type = "hidden";
+        form_id.name = "form";
+        form_id.value = "worklogid"
+        form.appendChild(form_id);
+
+        var log_id = document.createElement("input");
+        log_id.type = "hidden";
+        log_id.name = "work_log_id";
+        log_id.value = id;
+        form.appendChild(log_id);
+
+
+
+        document.body.appendChild(form);
+        form.submit();
+    }
+</script>
+
+
+{% endblock content %}
