@@ -1,1 +1,2 @@
-#test1
+Attendance monitor app.
+Made using Django.
